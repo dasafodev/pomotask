@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pomotask/pomodoro/pomodoro_view.dart';
+import 'package:pomotask/home/home_view.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,6 +12,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Pomotask',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         scaffoldBackgroundColor: const Color(0xffFBFAED),
         primaryColor: const Color(0xffFBFAED),
@@ -26,7 +27,7 @@ class MyApp extends StatelessWidget {
         ),
         useMaterial3: true,
       ),
-      home: const PomodoroScreen(),
+      home: const HomeView(),
     );
   }
 }

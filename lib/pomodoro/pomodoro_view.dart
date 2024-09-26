@@ -3,14 +3,14 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:pomotask/ui/button.dart';
 
-class PomodoroScreen extends StatefulWidget {
-  const PomodoroScreen({super.key});
+class PomodoroView extends StatefulWidget {
+  const PomodoroView({super.key});
 
   @override
-  State<PomodoroScreen> createState() => _PomodoroScreenState();
+  State<PomodoroView> createState() => _PomodoroViewState();
 }
 
-class _PomodoroScreenState extends State<PomodoroScreen> {
+class _PomodoroViewState extends State<PomodoroView> {
   static const int _workDuration = 25 * 60;
   static const int _breakDuration = 5 * 60;
   int _secondsRemaining = _workDuration;
@@ -57,6 +57,7 @@ class _PomodoroScreenState extends State<PomodoroScreen> {
       _isBreak = false;
       _secondsRemaining = _workDuration;
     });
+    Navigator.pop(context);
   }
 
   String _formatTime(int seconds) {
@@ -70,10 +71,6 @@ class _PomodoroScreenState extends State<PomodoroScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Pomodoro'),
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
-          onPressed: () {},
-        ),
       ),
       body: Center(
         child: Column(
@@ -116,10 +113,15 @@ class _PomodoroScreenState extends State<PomodoroScreen> {
                   child: const Text('Finalizar sesión'),
                 ),
                 const SizedBox(height: 16),
-                SimpleButton(
-                  onPressed: () => _resetTimer(!_isBreak),
-                  child: const Text('Descansar'),
-                ),
+                !_isBreak
+                    ? SimpleButton(
+                        onPressed: () => _resetTimer(!_isBreak),
+                        child: const Text('Descansar'),
+                      )
+                    : SimpleButton(
+                        onPressed: () => _resetTimer(!_isBreak),
+                        child: const Text('Trabajar'),
+                      ),
               ],
             ],
           ),
