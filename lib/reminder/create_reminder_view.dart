@@ -117,7 +117,7 @@ class _CreateReminderViewState extends State<CreateReminderView> {
       ),
       bottomNavigationBar: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16.0),
+          padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8),
           child: Button(
             onPressed: _saveReminder,
             child: Text('Guardar'),

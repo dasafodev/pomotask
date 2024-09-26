@@ -4,6 +4,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class ReminderRepository {
   static final ReminderRepository _instance = ReminderRepository._internal();
+  bool _isInitialized = false;
 
   factory ReminderRepository() {
     return _instance;
@@ -25,6 +26,9 @@ class ReminderRepository {
   }
 
   Future<List<ReminderModel>> getReminders() async {
+    if (!_isInitialized) {
+      await Future.delayed(Duration(seconds: 2));
+    }
     final prefs = await SharedPreferences.getInstance();
     final remindersJson = prefs.getStringList(_remindersKey) ?? [];
     return remindersJson
@@ -39,31 +43,50 @@ class ReminderRepository {
     if (remindersJson == null || remindersJson.isEmpty) {
       final defaultReminders = [
         ReminderModel(
-          title: 'Reminder 1',
+          title: 'Taller de programación',
           date: DateTime.now(),
           time: TimeOfDay.now(),
           isCompleted: false,
-          note: 'This is the first default reminder',
+          note: 'Taller de programación',
         ),
         ReminderModel(
-          title: 'Reminder 2',
+          title: 'Parcial de programación',
+          date: DateTime.now().add(Duration(hours: 1)),
+          time: TimeOfDay.now(),
+          isCompleted: false,
+          note: 'Taller de programación',
+        ),
+        ReminderModel(
+          title: 'Parcial de matemáticas',
+          date: DateTime.now().add(Duration(hours: 2)),
+          time: TimeOfDay.now(),
+          isCompleted: false,
+          note: 'Taller de programación',
+        ),
+        ReminderModel(
+          title: 'Taller de matemáticas',
           date: DateTime.now().add(Duration(days: 1)),
           time: TimeOfDay.now(),
           isCompleted: false,
-          note: 'This is the second default reminder',
+          note: 'Taller de matemáticas',
         ),
         ReminderModel(
-          title: 'Reminder 3',
+          title: 'Taller de física',
           date: DateTime.now().add(Duration(days: 2)),
           time: TimeOfDay.now(),
           isCompleted: false,
-          note: 'This is the third default reminder',
+          note: 'Taller de física',
         ),
       ];
 
       final remindersJson =
           defaultReminders.map((r) => r.toSharedPreferencesString()).toList();
       await prefs.setStringList(_remindersKey, remindersJson);
+      _isInitialized = true;
+      print(
+          'Recordatorios predeterminados inicializados: ${defaultReminders.length}');
+    } else {
+      print('Recordatorios existentes encontrados: ${remindersJson.length}');
     }
   }
 }
