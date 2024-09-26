@@ -1,16 +1,50 @@
-# pomotask
+# PomoTask
 
-A new Flutter project.
+PomoTask es una aplicación Flutter que combina un temporizador Pomodoro con un sistema de recordatorios para ayudarte a gestionar tu tiempo y tareas de manera eficiente.
 
-## Getting Started
+## Guía de inicio rápido
 
-This project is a starting point for a Flutter application.
+Sigue estos pasos para configurar y ejecutar la aplicación PomoTask en tu entorno local:
 
-A few resources to get you started if this is your first Flutter project:
+### Prerrequisitos
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+1. Asegúrate de tener instalado Flutter en tu sistema. Si no lo tienes, sigue la [guía oficial de instalación de Flutter](https://flutter.dev/docs/get-started/install).
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+2. Verifica tu instalación de Flutter ejecutando el siguiente comando en tu terminal:
+   ```
+   flutter doctor
+   ```
+   Asegúrate de resolver cualquier problema que se indique.
+
+### Pasos para ejecutar la aplicación
+
+1. Clona este repositorio en tu máquina local:
+   ```
+   git clone https://github.com/dasafodev/pomotask
+   ```
+
+2. Navega al directorio del proyecto:
+   ```
+   cd pomotask
+   ```
+
+3. Obtén las dependencias del proyecto:
+   ```
+   flutter pub get
+   ```
+
+4. Conecta un dispositivo (físico o emulador) a tu computadora.
+
+5. Ejecuta la aplicación:
+   ```
+   flutter run
+   ```
+
+La aplicación debería iniciarse en tu dispositivo o emulador.
+
+## Características principales
+
+- Temporizador Pomodoro
+- Sistema de recordatorios
+- Resumen de actividades
+
