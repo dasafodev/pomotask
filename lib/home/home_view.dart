@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pomotask/pomodoro/pomodoro_view.dart';
+import 'package:pomotask/reminder/reminder_view.dart';
 import 'package:pomotask/ui/button.dart';
 
 class HomeView extends StatelessWidget {
@@ -20,7 +21,12 @@ class HomeView extends StatelessWidget {
               ),
               const SizedBox(height: 16),
               SimpleButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => ReminderView()),
+                  );
+                },
                 child: const Text('Recordatorios'),
               ),
               const SizedBox(height: 8),

@@ -1,12 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:pomotask/home/home_view.dart';
+import 'package:pomotask/reminder/reminder_repository.dart';
 
 void main() {
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  @override
+  void initState() {
+    super.initState();
+    ReminderRepository().getReminders();
+  }
 
   @override
   Widget build(BuildContext context) {
